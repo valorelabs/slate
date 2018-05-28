@@ -73,8 +73,7 @@ html, body {
 
   // This is the logo at the top of the ToC
   .logo {
-    display: block;
-    max-width: 100%;
+    width: 60px;
     margin-bottom: $logo-margin;
   }
 
@@ -612,4 +611,13 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+.logo-wrapper {
+    margin: 40px 0 40px 0;
+    text-align: center;
+    display: block;
+}
+.logo-wrapper .logo {
+    width: 50px;
 }

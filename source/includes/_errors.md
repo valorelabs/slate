@@ -9,14 +9,62 @@ The Kittn API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+1000 | X-Auth-Token missing
+1001 | X-Auth-Token expired
+1002 | X-Auth-Token invalid
+1003 | Merchant ID missing
+1004 | Invalid merchant
+1005 | Merchant user doesn’t have permission for this operation
+1006 | User ID missing
+1007 | User ID invalid/doesn’t exist
+1008 | Amount missing
+1009 | Card ID missing
+1010 | Card ID invalid / doesn’t exist
+1011 | Not a Loyalty Card
+1012 | Not a Gift Card
+1013 | Card does not belong to merchant
+1014 | Merchant Store ID missing
+1015 | Merchant Store ID invalid / doesn’t exist
+1016 | Merchant User ID missing
+1017 | Merchant User ID invalid / doesn’t exist
+1018 | Phone Number missing
+1019 | Phone Number invalid
+1020 | Item Count missing
+1021 | Not a Loyalty Card
+1022 | Not a Loyalty Card
+1023 | Not a Loyalty Card
+1024 | Not a Loyalty Card
+1025 | Not a Loyalty Card
+1026 | Not a Loyalty Card
+1027 | Not a Loyalty Card
+1028 | Not a Loyalty Card
+1029 | Not a Loyalty Card
+1030 | Not a Loyalty Card
+1031 | Not a Loyalty Card
+1032 | Not a Loyalty Card
+1033 | Not a Loyalty Card
+1034 | Not a Loyalty Card
+1035 | Not a Loyalty Card
+1036 | Not a Loyalty Card
+1037 | Not a Loyalty Card
+1038 | Not a Loyalty Card
+1039 | Not a Loyalty Card
+1040 | Not a Loyalty Card
+1041 | Not a Loyalty Card
+1042 | Not a Loyalty Card
+1043 | Not a Loyalty Card
+1044 | Not a Loyalty Card
+1045 | Not a Loyalty Card
+1046 | Not a Loyalty Card
+1047 | Not a Loyalty Card
+1048 | Not a Loyalty Card
+1049 | Not a Loyalty Card
+1050 | Not a Loyalty Card
+1051 | Not a Loyalty Card
+1052 | Not a Loyalty Card
+1053 | Not a Loyalty Card
+1054 | Not a Loyalty Card
+1055 | Not a Loyalty Card
+1056 | Not a Loyalty Card
+1057 | Not a Loyalty Card
+1058 | Not a Loyalty Card

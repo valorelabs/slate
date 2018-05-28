@@ -2,10 +2,7 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - shell: cURL
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -19,221 +16,193 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Merchant Tablet API!
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+## Environment
+## Authentication
+## HTTP Status Code
+## Error Code
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
-> To authorize, use this code:
+## Login
 
-```ruby
-require 'kittn'
+> Definition
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```
+**POST** https://merchant-api.cambi.io/api/v2/authenticate
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
+> Example Request
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "userName": "scsiva",
+    "password": "12345678"
+}
+```
+> Example Response
+
+```json
+{
+    "roleLabel": "Manager",
+    "roleName": "manager",
+    "roleId": "role::1",
+    "roleDataVisibilityLevel": "STORE",
+    "merchantId": "merchant::72e170ab-0d57-4a2e-8d93-7f9cac872976",
+    "merchantName": "San Mateo Prime",
+    "merchantStoreId": "2ad2a3fe-ae70-4977-88ef-74a41ffc7e6a",
+    "merchantStoreName": "San Mateo Prime - SAN MATEO - 001",
+    "userId": "user::merchant::72e170ab-0d57-4a2e-8d93-7f9cac872976::5c1060fa-7d2d-4563-8b9e-805fd9a671cb",
+    "userName": "sansiva",
+    "isGiftEnabled": true,
+    "isLoyaltyEnabled": false,
+    "isTransactionNumberEnabled": false,
+    "isTransactionByPhoneNumberEnabled": true,
+    "isAmountFieldEnabled": true,
+    "isAutoLogoutEnabled": true,
+    "autoLogoutTimer": 0,
+    "loyaltyByCount": false,
+    "redemptionBlock": 1,
+    "conversionRate": 1,
+    "conversionType": "pts",
+    "accrualRate": 1,
+    "minimumEligibility": 0,
+    "permissions": [
+        "11",
+        "21",
+        "31",
+        "41",
+        "42",
+        "43",
+        "51",
+        "52",
+        "53",
+        "61",
+        "62",
+        "63",
+        "71",
+        "501",
+        "401",
+        "402",
+        "403",
+        "201",
+        "202",
+        "203",
+        "301",
+        "302",
+        "303",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "userManagementPage"
+    ],
+    "authTokenExpiryAtMs": 1527554765941,
+    "isSuccess": true,
+    "message": "Logged in successfully"
+}
 ```
 
-This endpoint retrieves all kittens.
-
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://merchant-api.cambi.io/api/v2/authenticate`
 
-### Query Parameters
-
-Parameter | Default | Description
+### Request JSON
+Parameter | Type | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+userName | `string` | If set to true, the result will also include cats.
+password | `string` | If set to false, the result will include kittens that have already been adopted.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+### Response JSON
+Parameter | Type | Description
+--------- | ------- | -----------
+userName | `string` | If set to true, the result will also include cats.
+password | `string` | If set to false, the result will include kittens that have already been adopted.
 
-## Get a Specific Kitten
+## Logout
 
-```ruby
-require 'kittn'
+> Definition
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```
+POST https://merchant-api.cambi.io/api/v1/logout
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Example Request
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "userName": "scsiva",
+    "password": "12345678"
 }
 ```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> Example Response
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+
 }
 ```
 
-This endpoint deletes a specific kitten.
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+### HTTP Endpoint
 
-### HTTP Request
+`POST https://merchant-api.cambi.io/api/v1/logout`
 
-`DELETE http://example.com/kittens/<ID>`
+### Request JSON
+Parameter | Type | Description
+--------- | ------- | -----------
+userName | `string` | If set to true, the result will also include cats.
+password | `string` | If set to false, the result will include kittens that have already been adopted.
 
-### URL Parameters
+### Response JSON
+Parameter | Type | Description
+--------- | ------- | -----------
+userName | `string` | If set to true, the result will also include cats.
+password | `string` | If set to false, the result will include kittens that have already been adopted.
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+# Transactions
+## Recent Transactions
 
+> Definition
+
+```
+GET https://merchant-api.cambi.io/api/v1/recentTransactions
+```
+
+> Example Request
+
+```json
+{
+    "userName": "scsiva",
+    "password": "12345678"
+}
+```
+> Example Response
+
+```json
+{
+    "message": "Logged in successfully"
+}
+```
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+### HTTP Endpoint
+
+`GET https://merchant-api.cambi.io/api/v1/recentTransactions`
+
+### Request Query Parameters
+Parameter | Type | Description
+--------- | ------- | -----------
+merchantId | `string` | If set to true, the result will also include cats.
+merchantUserId | `string` | If set to false, the result will include kittens that have already been adopted.
+days | String | If set to false, the result will include kittens that have already been adopted.
+
+### Response JSON
+Parameter | Type | Description
+--------- | ------- | -----------
+userName | `string` | If set to true, the result will also include cats.
+password | `string` | If set to false, the result will include kittens that have already been adopted.
