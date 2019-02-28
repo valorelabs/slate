@@ -15,32 +15,70 @@ search: true
 
 Welcome to the Merchant Tablet API!
 
-## Environment
-
+# Environment
+**Steps to get Merchant API up and running:**
+## Development
 > Dev
 
 ```
-http://merchant-api.dev.cambi.io
+http://merchant-api-dev.cambi.io
 ```
-> Staging
+###1. Go to the src directory
+```cd /home/app/apps/cambi-servers-v2/cambi-merchant-api```
 
-```
-https://merchant-api.staging.cambi.io
-```
+###2. Stop running app: 
+```fuser -k 7000/tcp && rm target/universal/stage/RUNNING_PID```
 
+###3. Pull changes from Github: 
+```git pull```
+
+###4. Re-compile: 
+```./activator clean stage```
+
+###5. Start in background: 
+```./target/universal/stage/bin/cambi-merchant-api -Dhttp.port=7000 -Dlogger.resource=logback.xml > /dev/null & disown```
+
+###6. To read logs: 
+```tail -f /home/app/apps/cambi-servers-v2-log/cambi/cambi-merchant-api/application.log```
+
+###7. To check: 
+```fuser -v 7000/tcp```
+
+## Production
 > Production
 
 ```
-https://merchant-api.cambi.io
+http://merchant-api.cambi.io
 ```
+###1. Switch to playapp user:
+```sudo su playapp```
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+###2. Go to the src directory
+```cd /home/playapp/production/cambi-servers-v2/cambi-merchant-api```
+
+###3. Stop running app: 
+```fuser -k 7000/tcp && rm target/universal/stage/RUNNING_PID```
+
+###4. Pull changes from Github: 
+```git pull```
+
+###5. Re-compile: 
+```./activator clean stage```
+
+###6. Start in background: 
+```./target/universal/stage/bin/cambi-merchant-api -Dhttp.port=7000 -Dlogger.resource=logback.xml > /dev/null & disown```
+
+###7. To read logs: 
+```tail -f /var/log/cambi/cambi-merchant-api/application.log```
+
+###8. To check: 
+```fuser -v 7000/tcp```
 
 ## Authentication & Header
 ## HTTP Status Code
 ## Error Code
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
 
 Error Code | Description
 ---------- | -------
